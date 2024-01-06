@@ -1,0 +1,31 @@
+﻿@model BlogViewModel
+<section id="page-header" class="blog-header" style="background-image: url(assets/img/banner/@(@Model.Banner != null ? @Model.Banner.ImagePath : default));">
+
+    <h2>#@Model.Banner.Tittle</h2>
+
+    <p>@Model.Banner.Description</p>
+
+
+</section>
+
+<section id="blog">
+    @foreach (var blog in Model.Blogs)
+    {
+        
+    <div class="blog-box">
+        <div class="blog-img">
+            <img src="assets/img/blog/@blog.MainImagePath" alt="">
+        </div>
+        <div class="blog-details">
+            <h4>@blog.Tittle</h4>
+            <p>
+              @blog.Content.Substring(1,100)
+            </p>
+            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">CONTINUE READING</a>
+        </div>
+        <h1>@blog.CreateTime.ToString("MM/dd")</h1>
+
+    </div>
+    }
+
+</section>

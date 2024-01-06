@@ -1,0 +1,77 @@
+﻿@model BlogItemViewModel
+
+<div class="blog-detail">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+
+                <div class="col-lg-12">
+                    <div class="blog-detail-item">
+                        <div class="blog-d-img">
+                            <a href=""><img src="~/assets/img/blog/@Model.Blog.MainImagePath" alt=""></a>
+                        </div>
+                        <div class="blog-detail-content">
+                            <div class="blog-detail-up">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i>@Model.Blog.CreateTime.ToString("ddd MMM dd yyyy")</span>
+                                <p class="blog-creater">By <a href="">@Model.Blog.Author</a></p>
+                            </div>
+                            <p class="blog-d-title">@Model.Blog.Tittle</p>
+                            <div class="blog-d-desc">
+                                <p>@Model.Blog.Content</p>
+                            </div>
+                            <div class="blog-d-images row justify-content-between">
+                                @foreach (var blogimage in Model.Blog.BlogImages)
+                                {
+                                    <div class="col-lg-6">
+
+                                        <img src="~/assets/img/blog/@blogimage.ImagePath" alt="">
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="blog-line-img">
+                                <img src="/assests/images/blog_item_line.png" alt="">
+                            </div>
+                            <div class="blog-item-down row">
+
+
+                                <div class="blog-item-socials">
+                                    <ul>
+                                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="tweet"><a href=""><i class="fab fa-twitter"></i></a></li>
+                                        <li class="linkedin"><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="recent-posts">
+
+                    <h3>Recent Posts</h3>
+                    @foreach (var recentBlog in Model.RecentBlogs)
+                    {
+
+                        <div class="rp-item">
+                            <div class="rp-item-img">
+                                <a href="">
+
+                                    <img src="~/assets/img/blog/@recentBlog.MainImagePath" alt="">
+                                </a>
+                            </div>
+                            <div class="rp-item-content">
+                                <a href="">@recentBlog.Tittle</a>
+                                <p><i class="far fa-calendar-alt"></i>@recentBlog.CreateTime.ToString("ddd MMM dd yyyy")</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

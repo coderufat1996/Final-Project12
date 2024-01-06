@@ -1,0 +1,44 @@
+﻿@using OnlineShoppingApp.Areas.Admin.ViewModels.ProductImage
+@model ListViewModel
+
+<div class="col-lg-12">
+    <div class="row justify-content-end">
+        <div class="">
+            <a asp-controller="productimage" asp-action="create" asp-route-productId="@Model.ProductId" class="btn btn-secondary">Add new productImage image</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Product Images</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var productImage in Model.Images)
+                        { 
+                            <tr>
+                                <td><img src="@productImage.ImagePath" /></td>
+                                <td class="text-end">
+                                    <a asp-controller="productimage" asp-action="update" asp-route-productId="@Model.ProductId" asp-route-Id="@productImage.Id" ><i class="las la-pen text-secondary font-16"></i></a>
+                                    <form method="POST" asp-controller="productimage" asp-action="delete" asp-route-productId="@Model.ProductId" asp-route-Id="@productImage.Id" id="product-image-form-@productImage.Id" ></form>
+                                    <button type="submit" form="product-image-form-@productImage.Id">
+                                        <i class="las la-trash-alt text-secondary font-16"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div> 

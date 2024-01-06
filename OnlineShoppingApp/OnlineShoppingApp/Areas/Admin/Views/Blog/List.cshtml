@@ -1,0 +1,53 @@
+﻿@using OnlineShoppingApp.DAL.Entities
+@model List<Blog>
+
+<div class="col-lg-12">
+    <div class="row justify-content-end">
+        <div class="">
+            <a asp-controller="blog" asp-action="create" class="btn btn-secondary">Add new blog</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Slider</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tittle</th>
+                            <th>Desctiption</th>
+                            <th>Author</th>
+                            <th>Date</th>
+                            <th>Image</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in Model)
+                        {
+                            <tr>
+                                <td>@blog.Tittle</td>
+                                <td>@blog.Content</td>
+                                <td>@blog.Author</td>
+                                <td> <img src="~/assets/img/blog/@blog.MainImagePath" width="10%"> </td>
+                                <td class="text-end">
+                                    <a asp-controller="blog" asp-action="update" asp-route-id="@blog.Id"><i class="las la-pen text-secondary font-16"></i></a>
+                                    <form method="POST"asp-controller="blog" asp-action="delete" asp-route-id="@blog.Id" id="blog-form-@blog.Id"></form>
+                                    <button type="submit" form="blog-form-@blog.Id">
+                                        <i class="las la-trash-alt text-secondary font-16"></i>
+                                    </button>
+                                  <a  asp-controller="blogImage" asp-action="list" asp-route-blogId="@blog.Id">Edit Images</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>

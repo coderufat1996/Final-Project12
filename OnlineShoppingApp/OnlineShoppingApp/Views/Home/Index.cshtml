@@ -1,0 +1,132 @@
+﻿@model HomeViewModel
+
+<section id="hero" style="background-image: url('/assets/img/hero4.png');">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons & up to 70% off!</p>
+    <button style="background-image:url(/assets/img/button.png)">Shop Now</button>
+
+</section>
+
+<section id="feature" class="section-p1">
+    @foreach (var benefit in Model.Benefits)
+    {
+
+        <div class="fe-box">
+            <img src="/assets/img/@benefit.ImagePath" alt="">
+            <h6>@benefit.Title</h6>
+        </div>
+    }
+   
+</section>
+
+<section id="product1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p>Summer Collection New Morden Design</p>
+    <div class="pro-container">
+        @foreach (var product in Model.Products)
+        {
+
+            <div class="pro">
+                <img src="/assets/img/products/@product.MainImagePath" alt="">
+                <div class="des">
+                    <span>@product.ProductCategory.Title</span>
+
+                   <a asp-controller="shop" asp-action="ShopItem" asp-route-id="@product.Id" ></a> <h5>@product.Name</h5>
+                    <div class="star">
+                        @for (var i = 0; i < @product.Rate; i++)
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+                    </div>
+                    <h4>$@product.Price</h4>
+                </div>
+                <a asp-controller="basket" asp-action="addbasket" asp-route-id="@product.Id"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+
+        }
+
+    </div>
+
+</section>
+
+<section id="banner" class="section-m1" style="background-image:url(/assets/img/banner/b2.jpg)">
+    <h4>Repair Services</h4>
+    <h2>Up to<span>70% Off</span>- All t-Shirts & Accessories</h2>
+    <button class="normal">Explore More</button>
+
+</section>
+
+<section id="product1" class="section-p1">
+    <h2>New Arrivals</h2>
+    <p>Summer Collection New Morden Design</p>
+    <div class="pro-container">
+        @foreach (var product in Model.NewProducts)
+        {
+
+          <div class="pro">
+                <img src="/assets/img/products/@product.MainImagePath" alt="">
+                <div class="des">
+                    <span>@product.ProductCategory.Title</span>
+
+                   <a asp-controller="shop" asp-action="ShopItem" asp-route-id="@product.Id" ></a> <h5>@product.Name</h5>
+                    <div class="star">
+                        @for (var i = 0; i < @product.Rate; i++)
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+                    </div>
+                    <h4>$@product.Price</h4>
+                </div>
+                <a asp-controller="basket" asp-action="addbasket" asp-route-id="@product.Id"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+
+        }
+
+       
+
+    </div>
+
+</section>
+
+<section id="sm-banner" class="section-p1">
+    @foreach (var deal in Model.Deals)
+    {
+
+        <div class="banner-box" style="background-image: url(/assets/img/banner/@deal.ImagePath);">
+            <h4>@deal.Title</h4>
+            <h2>@deal.Offer</h2>
+            <span>@deal.Description</span>
+            <a class="white">Learn More</a>
+
+        </div>
+    }
+
+    <div class="banner-box banner-box2" style="background-image: url(/assets/img/banner/b17.jpg);">
+        <h4>spring/summer</h4>
+        <h2>upcomming season</h2>
+        <span>The best classic dress is on sale at cara</span>
+        <a class="white">Collection</a>
+
+    </div>
+
+    <div class="banner-box banner-box2" style="background-image: url(/assets/img/banner/b17.jpg);">
+        <h4>spring/summer</h4>
+        <h2>upcomming season</h2>
+        <span>The best classic dress is on sale at cara</span>
+        <button class="white">Collection</button>
+
+    </div>
+
+    <div class="banner-box banner-box2" style="background-image: url(/assets/img/banner/b17.jpg);">
+        <h4>spring/summer</h4>
+        <h2>upcomming season</h2>
+        <span>The best classic dress is on sale at cara</span>
+        <button class="white">Collection</button>
+
+    </div>
+
+
+</section>
+

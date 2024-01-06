@@ -1,0 +1,64 @@
+﻿@model AccountViewModel   
+<div class="loging-area">
+
+                <section>
+                  <div class="container" id="change-log">
+                    <div class="user signinBx">
+                        <div class="imgBx"><img src="/assets/img/basket.png" alt="" /></div>
+
+                      <div class="formBx">
+                        <form asp-controller="account" asp-action="login">
+                          <h2>Sign In</h2>
+                          <input asp-for="LoginViewModel.UserNameOrEmail" placeholder="Username" />
+                          <span class="text-danger" asp-validation-for="LoginViewModel.UserNameOrEmail"></span>
+
+                          <input asp-for="LoginViewModel.Password" placeholder="Password" />
+                          <span class="text-danger" asp-validation-for="LoginViewModel.Password"></span>
+
+                          <div class="remember-me">
+    
+                              <label for="remember_me">Remember me</label>
+                              <input type="checkbox" asp-for="LoginViewModel.RememberMe" id="remember_me" />
+                          </div>
+                          <input type="submit" name="" value="Login" />
+                          <p class="signup">
+                            Don't have an account ?
+                            <a href="#" class="opre">Sign Up.</a>
+                            <br>
+                            <a asp-controller="account" asp-action="forgetpassword">Forget Password.</a>
+                          </p>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="user signupBx">
+                      <div class="formBx">
+                        <form  asp-controller="account" asp-action="register">
+                          <h2>Create an account</h2>
+                          <input asp-for="RegisterViewModel.FullName" placeholder="Full Name" />
+                          <span class="text-danger" asp-validation-for="RegisterViewModel.FullName"></span>
+                          <input asp-for="RegisterViewModel.UserName" placeholder="User Name" />
+                          <span class="text-danger" asp-validation-for="RegisterViewModel.UserName"></span>
+
+                          <input asp-for="RegisterViewModel.Email" placeholder="Email" />
+                          <span class="text-danger" asp-validation-for="RegisterViewModel.Email"></span>
+
+                          <input asp-for="RegisterViewModel.Password" placeholder="Password" />
+                          <span class="text-danger" asp-validation-for="RegisterViewModel.Password"></span>
+
+                          <input asp-for="RegisterViewModel.ConfirmPassword" placeholder="Confirm Password" />
+                          <span class="text-danger" asp-validation-for="RegisterViewModel.ConfirmPassword"></span>
+
+                         
+                          <input type="submit" name="" value="Sign Up" />
+                        
+                          <p class="signup">
+                            Already have an account ?
+                            <a href="#" class="closre">Sign in.</a>
+                          </p>
+                        </form>
+                      </div>
+                      <div class="imgBx"><img src="/assets/img/basket.png" alt="" /></div>
+                    </div>
+                  </div>
+                </section>
+        </div>

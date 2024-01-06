@@ -1,0 +1,24 @@
+﻿@using OnlineShoppingApp.Areas.Admin.ViewModels.Role
+@model UpdateViewModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">role</h4>
+            </div>
+            <div class="card-body">
+                <div class="general-label">
+                    <form method="POST" asp-controller="role" asp-action="create" enctype="multipart/form-data">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        @foreach (var role in Model.Roles)
+                        {
+                            <input @(Model.UserRoles.Any(ur => ur == role.Name) ? "checked" : "") type="checkbox" value="@role.Name" name="roles" /> @role.Name <br />
+                        }
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div>
+</div>

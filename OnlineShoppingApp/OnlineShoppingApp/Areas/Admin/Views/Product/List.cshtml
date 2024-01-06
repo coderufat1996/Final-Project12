@@ -1,0 +1,56 @@
+﻿@using OnlineShoppingApp.DAL.Entities
+@model List<Product>
+
+<div class="col-lg-12">
+    <div class="row justify-content-end">
+        <div class="">
+            <a asp-controller="product" asp-action="create" class="btn btn-secondary">Add new product</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">products</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Rate</th>
+                            <th>Image</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Price</td>
+                                <td>@product.Rate</td>
+                                <td>@product.CreateTime</td>
+                                <td>@product.ProductCategory.Title</td>
+                                <td width="50px"><img src="~/assets/img/products/@product.MainImagePath" width="100%"></img></td>
+                                <td class="text-end">
+
+                                <a asp-controller="product" asp-action="update" asp-route-id="@product.Id"><i class="las la-pen text-secondary font-16"></i></a>
+                                <form method="POST" asp-controller="product" asp-action="delete" asp-route-id="@product.Id" id="product-form-@product.Id"></form>
+                                <button type="submit" form="product-form-@product.Id">
+                                    <i class="las la-trash-alt text-secondary font-16"></i>
+                                </button>
+                                  <a  asp-controller="productImage" asp-action="list" asp-route-productId="@product.Id">Edit Images</a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>

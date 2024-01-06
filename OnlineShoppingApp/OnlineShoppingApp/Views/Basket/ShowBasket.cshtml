@@ -1,0 +1,76 @@
+﻿@model List<BasketViewModel>
+<section id="page-header" class="about-header">
+
+    <h2>#let's_talk</h2>
+
+    <p>LEAVE A MESSAGE, We love to hear from you!</p>
+
+
+</section>
+
+<section id="cart" class="section-p1">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+
+                <tr>
+                    <td><a asp-controller="basket" asp-action="Remove" asp-route-id="@product.Id"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="~/assets/img/products/@product.ImagePath" alt=""></td>
+                    <td>@product.Name</td>
+                    <td>$@product.Price</td>
+                    <td>
+                        <a asp-controller="basket" asp-action="Decrease" asp-route-id="@product.Id">-</a>
+                        @product.BasketCount
+                         <a asp-controller="basket" asp-action="Increase" asp-route-id="@product.Id">+</a>
+                    </td>
+                    <td>$@product.BasketPrice</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</section>
+
+<section id="cart-add" class="section-p1">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" placeholder="Enter Your Coupon">
+            <button class="normal">Apply</button>
+        </div>
+
+    </div>
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>$@Model.Sum(p => p.BasketPrice)</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>$@Model.Sum(p => p.BasketPrice)</strong></td>
+            </tr>
+        </table>
+        <button class="normal">Proceed to checkout</button>
+
+    </div>
+
+</section>

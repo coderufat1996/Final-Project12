@@ -1,0 +1,63 @@
+﻿@model ShopViewModel
+<section id="page-header" style="background-image: url(assets/img/banner/b1.jpg);">
+
+    <h2>#stayhome</h2>
+
+    <p>Save more with coupons & up to 70% off!</p>
+
+
+</section>
+
+<div class="container">
+    <div class="shop-pc-area row justify-content-center">
+
+        <section class="filter-area col">
+            <div class="widget">
+                <h4 class="sidebar-title">Category</h4>
+                <div class="shop-cat-list">
+                    <ul>
+                        @foreach (var category in Model.ProductCategories)
+                        {
+
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="@category.Id">@category.Title <span>+</span></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="product1" class="section-p1 col-lg-10">
+
+            <div class="pro-container">
+                @foreach (var product in Model.Products)
+                {
+
+                <div class="pro">
+                    <img src="~/assets/img/products/@product.MainImagePath" alt="">
+                    <div class="des">
+                        <span>@product.ProductCategory.Title</span>
+                       <a asp-controller="shop" asp-action="shopitem" asp-route-id="@product.Id"> <h5>@product.Name</h5></a>
+                        
+                        <div class="star">
+                            @for (var i = 0; i < @product.Rate; i++)
+                            {
+                                
+                            <i class="fas fa-star"></i>
+                            }
+                      
+                        </div>
+                        <h4>$@product.Price</h4>
+                    </div>
+                    <a asp-controller="basket" asp-action="addbasket" asp-route-id="@product.Id"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                }
+
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+
+

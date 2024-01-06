@@ -1,0 +1,44 @@
+﻿@model AboutViewModel
+
+
+<section id="page-header" class="about-header" style="background-image: url(assets/img/banner/@(@Model.Banner != null ? @Model.Banner.ImagePath : default);">
+
+    <h2>#@Model.Banner.Tittle</h2>
+
+    <p>@Model.Banner.Description</p>
+
+
+</section>
+
+<section id="about-head" class="section-p1">
+    <img src="~/assets//img/about/@(Model.About != null ? Model.About.ImagePath : default)" alt="">
+    <div>
+        <h2>@Model.About.Tittle</h2>
+        <p>@Model.About.Description</p>
+
+
+        <abbr title="">
+           @Model.About.Offer
+        </abbr>
+
+        <br><br>
+
+        <marquee bgcolor="#ccc" loop="-1" scroolamount="5" width="100%">
+            @Model.About.Offer
+        </marquee>
+    </div>
+
+</section>
+
+
+<section id="feature" class="section-p1">
+    @foreach (var benefit in Model.Benefits)
+    {
+
+        <div class="fe-box">
+            <img src="~/assets/img/benefit/@benefit.ImagePath" alt="">
+            <h6>@benefit.Title</h6>
+        </div>
+    }
+
+</section>

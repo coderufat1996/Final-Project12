@@ -1,0 +1,44 @@
+﻿@using OnlineShoppingApp.DAL.Entities
+@model List<Benefit>
+
+<div class="col-lg-12">
+    <div class="row justify-content-end">
+        <div class="">
+            <a asp-controller="benefit" asp-action="create" class="btn btn-secondary">Add new benefit</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Benefits</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tittle</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var benefit in Model)
+                        {
+                            <tr>
+                                <td>@benefit.Title</td>
+                                <td class="text-end">
+                                    <a asp-controller="benefit" asp-action="update" asp-route-id="@benefit.Id"><i class="las la-pen text-secondary font-16"></i></a>
+                                    <form method="POST"asp-controller="benefit" asp-action="delete" asp-route-id="@benefit.Id" id="benefit-form-@benefit.Id"></form>
+                                    <button type="submit" form="benefit-form-@benefit.Id">
+                                        <i class="las la-trash-alt text-secondary font-16"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>

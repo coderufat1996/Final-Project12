@@ -1,0 +1,44 @@
+﻿@using OnlineShoppingApp.DAL.Entities
+@model List<Size>
+
+<div class="col-lg-12">
+    <div class="row justify-content-end">
+        <div class="">
+            <a asp-controller="size" asp-action="create" class="btn btn-secondary">Add new size</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Sizes</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var size in Model)
+                        {
+                            <tr>
+                                <td>@size.Title</td>
+                                <td class="text-end">
+                                    <a asp-controller="size" asp-action="update" asp-route-id="@size.Id"><i class="las la-pen text-secondary font-16"></i></a>
+                                    <form method="POST"asp-controller="size" asp-action="delete" asp-route-id="@size.Id" id="size-form-@size.Id"></form>
+                                    <button type="submit" form="size-form-@size.Id">
+                                        <i class="las la-trash-alt text-secondary font-16"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>
